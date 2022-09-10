@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
+import TodoDetailPage from "./pages/TodoDetailPage";
+import TodoListPage from "./pages/TodoListPage";
+/**
+ * To use routing in react app we will need to wrap our all routes in BrowserRouter tag
+ * @returns Component
+ */
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="wrapper">
+			<BrowserRouter basename="/">
+				<Switch>
+					<Route path="/" component={TodoListPage} exact />
+					<Route path="/detail" component={TodoDetailPage} />
+				</Switch>
+			</BrowserRouter>
+		</div>
+	);
 }
 
 export default App;
